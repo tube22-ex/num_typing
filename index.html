@@ -8,39 +8,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
-        html,#btn,#btn01,#btn02,#btn03,#num{
-    font-family: 'Noto Serif JP', serif;
-}
-body{
-    
-    text-align: center;
-}
-#numdiv{
-    margin: 0 auto;
-}
+    <link rel="stylesheet" href="style.css">
 
-#numdiv::-webkit-scrollbar {
- display:none;
-}
-#status{
-font-size: 1.8em;
-}
-
-input[type="number"]::-webkit-outer-spin-button, 
-input[type="number"]::-webkit-inner-spin-button { 
-  -webkit-appearance: none; 
-  margin: 0; 
-} 
-
-    </style>
 </head>
 <body>
     <button id="btn" style="font-size: 1.5em;">start</button>
     桁数：<input type="number" id="btn01"style="font-size: 1.5em; width: 3em;" value="3">
     表示個数：<input type="number" id="btn02"style="font-size: 1.5em; width: 3em;" value="4">
-    
-    打ち切りモード<input type="checkbox" id="checkbox" checked>
+    打ち切りモード  <input type="checkbox" id="checkbox" checked>
+    スクロール  <input type="checkbox" id="checkbox01">
+
+
+
     個数：<input type="number" id="btn03"style="font-size: 1.5em; width: 3em;" value="30">
     <br>
     <div id="status">
@@ -54,6 +33,6 @@ input[type="number"]::-webkit-inner-spin-button {
     <input type="number" id="num" style="font-size: 3.4em;width: 90%;">
     <br>
     <div id="Result" style="font-size: 3em; display: inline;"></div>
-    <script src="index.js"></script>
+    <script src="four_inf.js"></script>
 </body>
 </html>

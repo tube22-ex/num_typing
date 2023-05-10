@@ -1,0 +1,57 @@
+html,#btn,#btn01,#btn02,#btn03{
+    font-family: 'Noto Serif JP', serif;
+    text-align: center;
+}
+
+#num{
+    font-family: 'Noto Serif JP', serif;
+}
+
+html{
+    background: #EEF0F4;
+}
+
+body{
+    
+    text-align: center;
+}
+#numdiv{
+    margin: 0 auto;
+}
+
+#numdiv::-webkit-scrollbar {
+ display:none;
+}
+#status{
+font-size: 1.8em;
+}
+
+input[type="number"]::-webkit-outer-spin-button, 
+input[type="number"]::-webkit-inner-spin-button { 
+    
+  -webkit-appearance: none; 
+  margin: 0; 
+} 
+
+
+#btn,input:not(input[type="checkbox"]){
+border: none;
+background: #EEF0F4;
+box-shadow: inset 9.91px 9.91px 15px #D9DADE, inset -9.91px -9.91px 15px #FFFFFF;
+}
+#btn,input:not(input[type="checkbox"]):not(#num){
+border-radius: 15%;
+}
+#num{
+    border-radius: 0.3em;
+}
+
+
+.nums{
+    border-radius: 0.3em;
+
+}
+
+
+
+

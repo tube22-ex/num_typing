@@ -5,8 +5,10 @@ let start_time;
 let key_cnt = 0
 let arr = []
 let cnt = 0
+let first_ran01 = true;
 let first_ran = true;
 let in_play = false;
+let one_line
 function main(){
     inter_clear()
 
@@ -30,7 +32,7 @@ function main(){
 
 },500)
     }
-
+    first_ran01 = true;
     first_ran = true;
     in_play = true;
     
@@ -83,7 +85,13 @@ function ran(){
             arr_div.style.float = 'left'
             numdiv.appendChild(arr_div)
             arr_div.style.width = Number(arr_div.offsetWidth + 30) +'px';
+
+            
             //numdiv.insertBefore(arr_div,numdiv.firstChild)
+            }
+
+            if(document.getElementById('checkbox01').checked == false){
+                document.getElementsByClassName('nums')[0].style.backgroundColor = '#999999';
             }
         }else{
 
@@ -105,6 +113,8 @@ function ran(){
            
         }
         first_ran = false;
+
+     
 };
 
 function check(){
@@ -126,7 +136,10 @@ function check(){
     let num = document.getElementById('num');
 
     if(document.getElementsByClassName('nums').length != 0){
+        if(document.getElementById('checkbox01').checked == true){
+
         if(num.value == document.getElementsByClassName('nums')[0].textContent){
+            
             key_cnt = key_cnt + num.value.length
             document.getElementById('score').textContent = key_cnt
             num.value = '';
@@ -134,15 +147,68 @@ function check(){
             ran()
             cnt++
         }
-    }
-            if(document.getElementsByClassName('nums').length <= 0){
-                kpm.textContent = Math.round((document.getElementById('score').textContent/time.textContent*60)*100)/100
+    }else{
 
-                inter_clear()
+        if(num.value == document.getElementsByClassName('nums')[cnt].textContent){
+            
+            key_cnt = key_cnt + num.value.length
+            document.getElementById('score').textContent = key_cnt
+            num.value = '';
+            if(first_ran01 == true){
+                document.getElementsByClassName('nums')[0].style.backgroundColor = '';
+                first_ran01 = false
+            }
+
+            one_line = Math.floor(document.getElementById('numdiv').clientWidth/document.getElementsByClassName('nums')[0].clientWidth)
+            if(cnt+2 > one_line){
+               for(let i=0;i<one_line;i++){
+                document.getElementsByClassName('nums')[0].remove();
+               }
+               cnt = 0
+            document.getElementsByClassName('nums')[cnt].style.backgroundColor = '#999999';
+            }else{
+            document.getElementsByClassName('nums')[cnt].style.backgroundColor = '';
+            if(document.getElementsByClassName('nums').length > cnt+1){
+            document.getElementsByClassName('nums')[cnt+1].style.backgroundColor = '#999999';
+            }
+            cnt++
+            }
+
+
+            ran()
+            
+        }
+
+
+
+    }
+
+    }   
+            if(document.getElementById('checkbox01').checked == true){
+                if(document.getElementsByClassName('nums').length <= 0){
                 
+                    kpm.textContent = Math.round((document.getElementById('score').textContent/time.textContent*60)*100)/100
+    
+                    inter_clear()
+                    
+                    document.getElementById('numdiv').innerHTML = '';
+                    cnt = 0
+                    key_cnt = 0
+                    in_play = false;
+                }
+            }else{
+                if(document.getElementsByClassName('nums').length <= cnt){
                 
-                key_cnt = 0
-                in_play = false;
+                    kpm.textContent = Math.round((document.getElementById('score').textContent/time.textContent*60)*100)/100
+    
+                    inter_clear()
+                    
+                    document.getElementById('numdiv').innerHTML = '';
+                    cnt = 0
+                    key_cnt = 0
+                    in_play = false;
+                }
+                
             }
         
     

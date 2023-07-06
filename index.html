@@ -1,40 +1,38 @@
 <!DOCTYPE html>
 <html lang="jp">
 <head>
-    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200;900&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="google-site-verification" content="WNlvqkNt2jGU4FfUsrvpVhCmyr1kh8bGFVv0Kg0wChU" />
-    <title>number Typing</title>
+    <title>Document</title>
     <link rel="stylesheet" href="style.css">
+    
 
 </head>
 <body>
-    <button id="btn" style="font-size: 1.5em;">start</button>
-    桁数：<input type="number" id="btn01"style="font-size: 1.5em; width: 3em;" value="3">
-    表示個数：<input type="number" id="btn02"style="font-size: 1.5em; width: 3em;" value="4">
-    打ち切りモード  <input type="checkbox" id="checkbox" checked>
-    スクロール  <input type="checkbox" id="checkbox01">
-
-
-
-    個数：<input type="number" id="btn03"style="font-size: 1.5em; width: 3em;" value="30">
-    <br>
+    <button id="btn">start</button>
     <div id="status">
     score: <div id="score" style="width: 3em; display: inline;">0</div>
     time: <div id="time" style="width: 3em; display: inline;">0</div>
     kpm: <div id="kpm" style="width: 3em; display: inline;">0</div>
     </div>
     <br>
-    
     <div id="numdiv" style="font-size: 3em;max-height: 3em;overflow: auto;max-width: 90%;"></div>
     <input type="number" id="num" style="font-size: 3.4em;width: 90%;">
     <br>
+        桁数：<input type="number" id="btn01"style="font-size: 1.5em; width: 3em;" value="3">
+    表示個数：<input type="number" id="btn02"style="font-size: 1.5em; width: 3em;" value="4">
+    打ち切りモード  <input type="checkbox" id="checkbox" checked>
+    スクロール  <input type="checkbox" id="checkbox01">
+    個数：<input type="number" id="btn03"style="font-size: 1.5em; width: 3em;" value="30">
+    <br>
+    <canvas id="myLineChart"></canvas>
     <div id="Result" style="font-size: 3em; display: inline;"></div>
-    <script src="four_inf.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.3.0/chart.umd.min.js"></script>
+    <script src="index.js"></script>
+    
 </body>
 </html>

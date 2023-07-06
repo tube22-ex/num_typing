@@ -2,28 +2,70 @@ let interval;
 let type_len;
 let type_lengs;
 let start_time;
-let key_cnt = 0
-let arr = []
-let cnt = 0
+let key_cnt = 0;
+let arr = [];
+let cnt = 0;
 let first_ran01 = true;
 let first_ran = true;
 let in_play = false;
-let one_line
-function main(){
-    inter_clear()
+let one_line;
+let time_data = [];
+let kpm_data = [];
+let time_cnt = 0;
+let avgKpm = [];
 
+function add_chart(k,t){
+    console.log(myLineChart)
+let ctx = document.getElementById('myLineChart');
+var myLineChart = new Chart(ctx, {
+    type:'line',
+    data:{
+        labels:time_data,
+        datasets:[{
+            label:'KPM',
+            data:kpm_data,
+            borderColor: "#808080",
+            backgroundColor: "rgba(0,0,0,0)"
+        },
+        // {
+        //     label:'平均KPM',
+        //     data:avgKpm,
+        //     borderColor: "rgba(255,0,0,1)",
+        //     backgroundColor: "rgba(0,0,0,0)"
+        // }
+    ]
+    },
+
+});
+}
+
+function main(){
+    document.getElementById('myLineChart').remove();
+    
+    
+    
+    let mylinechart = document.createElement('canvas');
+    mylinechart.id = 'myLineChart'
+    document.getElementById('Result').before(mylinechart)
+
+
+    inter_clear()
     if(in_play == true){
-    type_len = ''
-    type_lengs = ''
-    start_time = ''
-    key_cnt = 0
-    arr = []
-    cnt = 0
+    type_len = '';
+    type_lengs = '';
+    start_time = '';
+    key_cnt = 0;
+    arr = [];
+    cnt = 0;
+    time_cnt = 0;
+    time_data = [];
+    kpm_data =[];
     first_ran = true;
+    avgKpm = [];
    document.getElementById('numdiv').innerHTML = '';
 
         document.getElementById('num').value = '';
-    key_cnt = 0
+    key_cnt = 0;
     in_play = false;
     document.getElementById('time').textContent = '0.000';
     document.getElementById('kpm').textContent = '0.000';
@@ -31,7 +73,7 @@ function main(){
     setTimeout(()=>{
 
 },500)
-    }
+    };
     first_ran01 = true;
     first_ran = true;
     in_play = true;
@@ -41,39 +83,56 @@ function main(){
     let kpm = document.getElementById('kpm');
     let Elapsed_time;
     let kpm_m;
-    document.getElementById('score').textContent = key_cnt
+    document.getElementById('score').textContent = key_cnt;
 
     if(document.getElementById('checkbox').checked == true){
-        type_len = document.getElementById('btn03').value
+        type_len = document.getElementById('btn03').value;
     }else{
-        type_len = document.getElementById('btn02').value
+        type_len = document.getElementById('btn02').value;
     }
     document.getElementById('num').focus();
     if(first_ran === true){setTimeout(ran, 400)};
 
     function times() {
         if(start_time != 0){
-        Elapsed_time = (new Date().getTime() - start_time)/1000
-        kpm_m = Math.round(((key_cnt/(Elapsed_time-0.888)*60))*100)/100
+        Elapsed_time = (new Date().getTime() - start_time)/1000;
+        kpm_m = Math.round(((key_cnt/(Elapsed_time-0.888)*60))*100)/100;
+        if(Math.floor(Elapsed_time) >= time_cnt + 1){
+            time_cnt = time_cnt+1
+            time_data.push(time_cnt);
+            kpm_data.push(kpm_m.toFixed(3))
+            console.log(kpm_data)
+            // let kpmSum = 0;
+            // if(kpm_data.length >= 2){
+            //     console.log(kpm_data[kpm_data.length - 1]);
+            //     for(let i = 2; i<kpm_data.length;i++){
+            //         kpmSum = kpmSum + Number(kpm_data[i])
+            //     }
+            //     let avg = kpmSum / kpm_data.length - 3
+            //     avgKpm.push(avg.toFixed(3));
+                
+            // }
+
+        };
         kpm.textContent = kpm_m.toFixed(3);
         time.textContent = Elapsed_time.toFixed(3);
        
-        }
-    }
+        };
+    };
 function inter(){
-    interval = setInterval(times,20) 
-}
+    interval = setInterval(times,20) ;
+};
 
 function inter_clear(){
-    clearInterval(interval)
-}
+    clearInterval(interval);
+};
 function ran(){
     if(first_ran === true){
         start_time = new Date().getTime();
-        inter()
+        inter();
         for(let i=0;i<type_len;i++){
             if(document.getElementById('btn01').value == 0){
-            type_lengs = Math.floor(Math.random() * 9) + 1
+            type_lengs = Math.floor(Math.random() * 9) + 1;
             }else{
                 type_lengs = document.getElementById('btn01').value - 1
             }
@@ -195,6 +254,10 @@ function check(){
                     cnt = 0
                     key_cnt = 0
                     in_play = false;
+                    time_data.shift();
+                    kpm_data.shift();
+                    add_chart(time_data,kpm_data);
+                    
                 }
             }else{
                 if(document.getElementsByClassName('nums').length <= cnt){
@@ -207,6 +270,10 @@ function check(){
                     cnt = 0
                     key_cnt = 0
                     in_play = false;
+                    time_data.shift();
+                    kpm_data.shift();
+                    add_chart(time_data,kpm_data);
+                    
                 }
                 
             }

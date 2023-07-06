@@ -15,7 +15,6 @@ let time_cnt = 0;
 let avgKpm = [];
 
 function add_chart(k,t){
-    console.log(myLineChart)
 let ctx = document.getElementById('myLineChart');
 var myLineChart = new Chart(ctx, {
     type:'line',
@@ -101,7 +100,6 @@ function main(){
             time_cnt = time_cnt+1
             time_data.push(time_cnt);
             kpm_data.push(kpm_m.toFixed(3))
-            console.log(kpm_data)
             // let kpmSum = 0;
             // if(kpm_data.length >= 2){
             //     console.log(kpm_data[kpm_data.length - 1]);
@@ -298,3 +296,10 @@ window.addEventListener('keydown',function keys(ev){
         document.getElementById('btn').focus()
     }
 });
+
+Shojo Now Loading...
+
+ 
+Shojo Now Loading...
+
+ 

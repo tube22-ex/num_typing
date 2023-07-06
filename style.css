@@ -1,6 +1,11 @@
-html,#btn,#btn01,#btn02,#btn03{
+html,#btn01,#btn02,#btn03{
     font-family: 'Noto Serif JP', serif;
     text-align: center;
+}
+#btn{
+    font-family:'Noto Serif JP', serif;
+    font-size: 2em;
+    position: fixed; left: 5em;
 }
 
 #num{
